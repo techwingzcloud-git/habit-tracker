@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #F8FAFC;
+    color: #111827;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #F1F5F9;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-2xl shadow-card border border-gray-100 p-5;
+  }
+  .btn-primary {
+    @apply bg-primary text-white px-5 py-2.5 rounded-xl font-semibold text-sm
+    hover:bg-primary-dark active:scale-95 transition-all duration-150 shadow-soft;
+  }
+  .btn-ghost {
+    @apply px-4 py-2 rounded-xl text-sm font-medium text-text-muted 
+    hover:bg-gray-100 active:scale-95 transition-all duration-150;
+  }
+  .input-base {
+    @apply w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm font-medium
+    focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary
+    placeholder:text-gray-400 transition-all duration-150 bg-white;
+  }
+  .sidebar-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium
+    text-text-muted hover:bg-pastel-purple hover:text-primary transition-all duration-150;
+  }
+  .sidebar-link.active {
+    @apply bg-primary/10 text-primary font-semibold;
+  }
+  .habit-checkbox {
+    @apply w-7 h-7 rounded-lg border-2 border-gray-200 flex items-center justify-center
+    cursor-pointer transition-all duration-200 hover:border-primary/50 hover:bg-primary/5;
+  }
+  .habit-checkbox.checked {
+    @apply bg-success border-success text-white animate-pop;
+  }
+  .stat-card {
+    @apply card flex flex-col gap-1;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-purple-500 bg-clip-text text-transparent;
+  }
+  .glass {
+    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,0.85);
+  }
+}
+
+/* Custom checkbox animation */
+.check-animation {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Heatmap cells */
+.heatmap-cell {
+  @apply rounded transition-transform hover:scale-125 cursor-pointer;
+}
+
+/* Google button */
+.google-btn {
+  @apply flex items-center gap-3 px-6 py-3 bg-white border-2 border-gray-200 
+  rounded-2xl font-semibold text-text hover:border-primary/40 hover:shadow-soft 
+  active:scale-95 transition-all duration-200;
+}
+
+/* Loading spinner */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #E5E7EB;
+  border-top-color: #4F46E5;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Tooltip */
+.tooltip {
+  @apply absolute z-50 px-2.5 py-1.5 text-xs font-medium text-white bg-gray-800 
+  rounded-lg pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity 
+  duration-150 whitespace-nowrap;
+}
+
+/* Progress bar */
+.progress-bar {
+  @apply h-2 rounded-full bg-gray-100 overflow-hidden;
+}
+.progress-fill {
+  @apply h-full rounded-full transition-all duration-700 ease-out;
+}
